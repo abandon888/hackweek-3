@@ -2,6 +2,7 @@ import { Card, Form, Input, Checkbox, Button, Toast, Space, Image } from 'antd-m
 // import logo from '@/assets/logo.png'
 import { useNavigate } from 'react-router-dom'
 // 导入样式文件
+import "./index.scss"
 import backImg from '../../assets/bg1.png'
 import { useStore } from 'C:/Users/18767/Desktop/html/22/bilibili-activity-page-demo-1/src/store'
 function Login () {
@@ -16,6 +17,12 @@ function Login () {
         console.log('after')
       },
     })
+  }
+  const onregister = () => {
+    navigate('/register', { replace: true })
+  }
+  const onforget = () => {
+    navigate("/forget", { replace: true })
   }
   async function onFinish (values) {
     console.log(values)
@@ -36,7 +43,7 @@ function Login () {
 
   return (
     <div className='login'>
-      <Card >
+      <Card className=''>
         {/* <img src={}className="login-logo" alt="" /> */}
         {/* 登录表单 */}
         {/* 子项用到的触发事件 需要在Form中都声明一下才可以 */}
@@ -83,14 +90,18 @@ function Login () {
           </Form.Item>
           <Form.Item
             name="remember"
-            valuePropName="checked"
+            valuePropName="unchecked"
 
           >
             <Checkbox className="login-checkbox-label">
               我已阅读并同意「用户协议」和「隐私条款」
             </Checkbox>
           </Form.Item>
-
+          <Form.Item
+            name="regiser"
+            color='primary'
+          >
+          </Form.Item>
           <Form.Item>
 
             <Button type="primary" color='primary' htmlType="submit" size="large" block>
@@ -100,6 +111,10 @@ function Login () {
             <Button size='large' block onClick={visitorLog} >以游客模式登录</Button>
           </Form.Item>
         </Form>
+        <div className="login-gofuc">
+          <Button onClick={onforget}><a src="#" >忘记密码</a></Button>
+          <Button onClick={onregister}><a src="#" >快速注册</a></Button>
+        </div>
       </Card>
     </div>
   )
