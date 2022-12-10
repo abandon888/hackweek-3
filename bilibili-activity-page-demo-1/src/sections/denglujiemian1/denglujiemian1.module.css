@@ -15,11 +15,10 @@
   height: 9.19rem;
 }
 .group {
-  padding-left: 2.88rem;
-  padding-right: 2.5rem;
+  padding: 0 2.63rem;
 }
 .text-wrapper {
-  margin-right: 0.38rem;
+  margin: 0 0.25rem;
   padding: 0.81rem 0 0.75rem;
   background-image: url('https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/6394072a5a7e3f0310afdcd1/639407585281490011ca69b3/16706457298103036464.png');
   background-size: 100% 100%;
@@ -33,43 +32,74 @@
   color: #00efff;
 }
 .text {
-  margin-left: 2.25rem;
   opacity: 0.8;
+}
+.text_2 {
+  margin-left: 2.25rem;
 }
 .group_2 {
   margin-top: 1.88rem;
-  padding: 0.81rem 0 0.75rem;
+}
+.group_3 {
+  padding: 0.81rem 0 2rem;
   position: relative;
+}
+.text_3 {
+  margin-left: 2.5rem;
 }
 .image_2 {
   width: 18.63rem;
   height: 3rem;
   position: absolute;
-  left: 0;
-  right: 0.38rem;
-  bottom: 0;
-}
-.group_3 {
-  margin-top: 1.88rem;
-}
-.space-y-24 > *:not(:first-child) {
-  margin-top: 1.5rem;
+  left: 0.25rem;
+  right: 0.25rem;
+  top: 0;
 }
 .button {
+  margin-right: 0.13rem;
   padding: 1rem 0;
-  background-image: linear-gradient(90deg, #00c1ff 50%, #53d5ff70 80%, #53d5ff00 104.1%, #53d5ff69 104.1%);
+  background-image: linear-gradient(
+    90deg,
+    #00c1ff 50%,
+    #53d5ff70 80%,
+    #53d5ff00 104.1%,
+    #53d5ff69 104.1%
+  );
   border-radius: 6.25rem;
 }
-.text_2 {
-  color: #ffffff;
+.font_2 {
   font-size: 1.63rem;
   font-family: ABeeZee;
   line-height: 1.5rem;
+  color: #ffffff;
+}
+.text_4 {
   font-style: italic;
 }
 .group_4 {
-  margin-top: 12.5rem;
-  padding: 0 0.69rem;
+  margin-top: 1.25rem;
+  padding: 0 0.5rem;
+}
+.font_3 {
+  font-size: 1.25rem;
+  font-family: PingFang SC;
+  line-height: 1.16rem;
+  font-weight: 700;
+  color: #e0d6ff;
+}
+.text_5 {
+  margin-right: 0.19rem;
+}
+.button_2 {
+  margin-right: 0.13rem;
+  margin-top: 3rem;
+  padding: 1rem 0 1.06rem;
+  border-radius: 6.25rem;
+  border: solid 0.063rem #ffffff;
+}
+.group_5 {
+  margin-top: 8.44rem;
+  padding: 0 0.94rem;
 }
 .section {
   flex-shrink: 0;
@@ -78,11 +108,15 @@
   height: 1.25rem;
   border: solid 0.063rem #7100d9;
 }
-.text_3 {
+.text_6 {
   margin: 0.25rem 0 0.25rem 0.88rem;
   color: #a83aff;
   font-size: 0.88rem;
   font-family: PingFang SC;
   font-weight: 700;
   line-height: 0.81rem;
+}
+.input1 {
+  outline: none;
+  border-color: rgba(0, 178, 255, 1);
 }

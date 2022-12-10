@@ -8,10 +8,13 @@ import Login from './sections/Login'
 import NotFound from './NotFound'
 import Register from './sections/register'
 import Forget from './sections/forget'
+import Denglujiemian1 from './sections/denglujiemian1/denglujiemian1'
+
 function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/dl1" element={<Denglujiemian1 />} />
         <Route path="/forget" element={<Forget />} />
         <Route path="/register" element={<Register />} />
         <Route path="/" element={<Login />} />

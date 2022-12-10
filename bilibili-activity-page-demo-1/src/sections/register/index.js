@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
-import "./index.css"
+import styles from "./index.css"
 import { Card, Form, Input, Checkbox, Button, Toast, Space, Image } from 'antd-mobile'
 import { useStore } from 'C:/Users/18767/Desktop/html/22/bilibili-activity-page-demo-1/src/store'
 
@@ -33,39 +33,53 @@ export default function Register () {
     })
   }
   return (
-    <Card>
-      <Form
-        layout='vertical'
-        onFinish={onsubmit}
-        footer={
-          <Button block type='submit' color='primary' size='large'>
-            提交
-          </Button>
-        }
-      >
-        <Form.Header><h1>注册</h1></Form.Header>
-        <Form.Item
-          label='用户名'
-          name='mobile'
-          rules={[{ required: true, message: '姓名不能为空!' }]}
+    <div className={`flex-col ${styles['page']} ${styles['space-y-46']}`}>
+      <img
+        className={`${styles['image']}`}
+        src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/6394072a5a7e3f0310afdcd1/639407585281490011ca69b3/16706457298077126409.png"
+      />
+      <div className={`flex-col ${styles['group']}`}>
+        <Form
+          layout='vertical'
+          onFinish={onsubmit}
+          footer={
+            <div className={`flex-col justify-start items-center ${styles['button']}`}>
+              <button type='submit' className={`${styles['text_2']}`}>
+                注册
+              </button>
+            </div>
+
+          }
         >
-          <Input placeholder='请输入用户名' clearable />
-        </Form.Item>
-        <Form.Item
-          label='密码'
-          name='code1'
-          clearable
-        >
-          <Input placeholder='请输入密码' clearable type="password" />
-        </Form.Item>
-        <Form.Item
-          label='确认密码'
-          name='code2'
-          clearable
-        >
-          <Input placeholder='请再次输入密码' clearable type="password" />
-        </Form.Item>
-      </Form>
-    </Card>
+          <Form.Item
+            label='用户名'
+            name='mobile'
+            rules={[{ required: true, message: '姓名不能为空!' }]}
+          >
+            <div className={`flex-col justify-start items-start ${styles['text-wrapper']}`}>
+              <Input placeholder='请设置用户名' clearable className={`flex-col justify-start items-start ${styles['text-wrapper']}`} />
+            </div>
+          </Form.Item>
+          <Form.Item
+            label='密码'
+            name='code1'
+            clearable
+          >
+            <div className={`flex-col justify-start items-start ${styles['text-wrapper']}`}>
+              <Input placeholder='请设置密码' clearable type="password" className={`${styles['font_1']} ${styles['text']}`} />
+            </div>
+          </Form.Item>
+          <Form.Item
+            label='确认密码'
+            name='code2'
+            clearable
+          >
+            <div className={`flex-col justify-start items-start ${styles['text-wrapper']}`}>
+              <Input placeholder='请再次输入密码' clearable type="password" className={`${styles['font_1']} ${styles['text']}`} />
+            </div>
+          </Form.Item>
+        </Form>
+      </div>
+    </div>
   )
 }

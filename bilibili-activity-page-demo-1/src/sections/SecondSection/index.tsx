@@ -27,8 +27,6 @@ import {
 import { useStore } from '../../store'
 import { observer } from 'mobx-react-lite'
 
-const TAB_HEIGHT = 56
-
 // 1. 点击 Tab 滚动跳转 x
 // 3. Tabs 吸顶 x
 // 2. 滚动时，高亮 Tab x
@@ -65,6 +63,7 @@ const SecondSection: FC = () => {
       address: values.address,
     })
   }
+  //坟墓卡片设计
   const items = taskStore.list.map((item) => (
     <Swiper.Item key={item.id}>
       <div
@@ -87,55 +86,113 @@ const SecondSection: FC = () => {
       </div>
     </Swiper.Item>
   ))
-  const activate = (key: string) => {
-    setActiveTab(key)
+  // const activate = (key: string) => {
+  //   setActiveTab(key)
 
-    const tabContentEl = document.querySelector(`[data-id=${key}]`)
+  //   const tabContentEl = document.querySelector(`[data-id=${key}]`)
 
-    if (tabContentEl) {
-      tabContentEl.scrollIntoView({ behavior: 'smooth' })
-    }
-  }
+  //   if (tabContentEl) {
+  //     tabContentEl.scrollIntoView({ behavior: 'smooth' })
+  //   }
+  // }
 
-  const onScroll = () => {
-    if (secondSectionRef.current) {
-      const { top } = secondSectionRef.current.getBoundingClientRect()
-      setIsFixed(top <= 0)
+  // const onScroll = () => {
+  //   if (secondSectionRef.current) {
+  //     const { top } = secondSectionRef.current.getBoundingClientRect()
+  //     setIsFixed(top <= 0)
 
-      const sectionNodes = secondSectionRef.current.querySelectorAll('section')
+  //     const sectionNodes = secondSectionRef.current.querySelectorAll('section')
 
-      Array.from(sectionNodes).forEach((sectionEl) => {
-        const { top } = sectionEl.getBoundingClientRect()
-        const key = sectionEl.getAttribute('data-id') || ''
+  //     Array.from(sectionNodes).forEach((sectionEl) => {
+  //       const { top } = sectionEl.getBoundingClientRect()
+  //       const key = sectionEl.getAttribute('data-id') || ''
 
-        if (top <= TAB_HEIGHT) {
-          setActiveTab(key)
-        }
-      })
-    }
-  }
+  //       if (top <= TAB_HEIGHT) {
+  //         setActiveTab(key)
+  //       }
+  //     })
+  //   }
+  // }
 
-  useEffect(() => {
-    window.addEventListener('scroll', onScroll)
+  // useEffect(() => {
+  //   window.addEventListener('scroll', onScroll)
 
-    return () => {
-      window.removeEventListener('scroll', onScroll)
-    }
-  }, [])
+  //   return () => {
+  //     window.removeEventListener('scroll', onScroll)
+  //   }
+  // }, [])
   return (
     <div className={styles.secondSection} ref={secondSectionRef}>
       {/* Tabs */}
       <ul className={classNames({ [styles.isFixed]: isFixed })}>
         {taskStore.list.map((item) => (
-          <li key={item.id} onClick={() => activate(item.name)}>
+          <li key={item.id}>
             <span>{item.name}</span>
-            <span
+            {/* <span
               className={classNames(styles.line, {
                 [styles.visible]: activeTab === item.name,
+              })}
+            /> */}
+          </li>
+        ))}
+      </ul>
+      {/* <ul className={classNames({ [styles.isFixed]: isFixed })}>
+        {tabs.map((tab) => (
+          <li key={tab.key} onClick={() => activate(tab.key)}>
+            <span>{tab.title}</span>
+            <span
+              className={classNames(styles.line, {
+                [styles.visible]: activeTab === tab.key,
               })}
             />
           </li>
         ))}
+      </ul> */}
+
+      {/* 类名标识 */}
+      {/* <List header="墓碑列表">
+        {taskStore.list.map((item) => (
+          <section data-id={item.id}>
+            <Swiper.Item key={item.id}>
+              <Button
+                color="primary"
+                onClick={() =>
+                  Dialog.confirm({
+                    content: '确定要删除吗？',
+                    onConfirm: () => delTask(item.id),
+                  })
+                }>
+                删除
+              </Button>
+              {item.address}
+              {item.name}
+              <div
+                onClick={() => {
+                  Toast.show(`你点击了坟墓${item.id}`)
+                }}>
+                {item.id}
+              </div>
+            </Swiper.Item>
+          </section>
+          // <li className="todo" >
+          //   <div className="view">
+          //     <label>{item.name}</label>
+          //     <label>{item.address}</label>
+          //   </div>
+          // </li>
+        ))}
+      </List> */}
+      {/* <div>
+        {taskStore.list.map((item) => (
+          <section data-id={.key}>
+            <h2>{tab.title}</h2>
+            <img src={tab.image} alt={tab.key} />
+          </section>
+        ))}
+      </div> */}
+      <Swiper>{items}</Swiper>
+      {/* 吸底按钮 */}
+      <div>
         <Button
           onClick={() => {
             setVisible1(true)
@@ -195,70 +252,6 @@ const SecondSection: FC = () => {
             </Space>
           </div>
         </Popup>
-      </ul>
-      {/* <ul className={classNames({ [styles.isFixed]: isFixed })}>
-        {tabs.map((tab) => (
-          <li key={tab.key} onClick={() => activate(tab.key)}>
-            <span>{tab.title}</span>
-            <span
-              className={classNames(styles.line, {
-                [styles.visible]: activeTab === tab.key,
-              })}
-            />
-          </li>
-        ))}
-      </ul> */}
-
-      {/* 类名标识 */}
-      {/* <List header="墓碑列表">
-        {taskStore.list.map((item) => (
-          <section data-id={item.id}>
-            <Swiper.Item key={item.id}>
-              <Button
-                color="primary"
-                onClick={() =>
-                  Dialog.confirm({
-                    content: '确定要删除吗？',
-                    onConfirm: () => delTask(item.id),
-                  })
-                }>
-                删除
-              </Button>
-              {item.address}
-              {item.name}
-              <div
-                onClick={() => {
-                  Toast.show(`你点击了坟墓${item.id}`)
-                }}>
-                {item.id}
-              </div>
-            </Swiper.Item>
-          </section>
-          // <li className="todo" >
-          //   <div className="view">
-          //     <label>{item.name}</label>
-          //     <label>{item.address}</label>
-          //   </div>
-          // </li>
-        ))}
-      </List> */}
-      {/* <div>
-        {taskStore.list.map((item) => (
-          <section data-id={.key}>
-            <h2>{tab.title}</h2>
-            <img src={tab.image} alt={tab.key} />
-          </section>
-        ))}
-      </div> */}
-      <Swiper>{items}</Swiper>
-      {/* 吸底按钮 */}
-      <div
-        className={classNames(styles.btnWrapper, {
-          [styles.visible]: isFixed,
-        })}>
-        {/* <img src={LogoImage} alt="LOGO" /> */}
-        {/* 弹出层按钮 */}
-        <Button>登录</Button>
       </div>
     </div>
   )
